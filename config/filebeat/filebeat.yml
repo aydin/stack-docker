@@ -1,7 +1,6 @@
+keystore.path: "/usr/share/filebeat/config/filebeat.keystore"
+
 filebeat.config:
-  prospectors:
-    path: ${path.config}/prospectors.d/*.yml
-    reload.enabled: false
   modules:
     path: ${path.config}/modules.d/*.yml
     reload.enabled: false
@@ -15,7 +14,7 @@ output.elasticsearch:
   username: elastic
   # Read PW from filebeat.keystore
   password: "${ELASTIC_PASSWORD}"
-  ssl.certificate_authorities: ["/usr/share/filebeat/certs/ca/ca.crt"]
+  ssl.certificate_authorities: ["/certs/ssl/ca/ca.crt"]
 
 setup.kibana:
   host: "http://kibana:5601"
@@ -23,6 +22,6 @@ setup.kibana:
   password: "${ELASTIC_PASSWORD}"
   protocol: "http"
   ssl.enabled: false
-  ssl.certificate_authorities: ["/usr/share/filebeat/certs/ca/ca.crt"]
+  ssl.certificate_authorities: ["/certs/ssl/ca/ca.crt"]
 
 xpack.monitoring.enabled: true
